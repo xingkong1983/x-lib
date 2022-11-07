@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class LogTool extends Thread {
@@ -29,21 +30,23 @@ public class LogTool extends Thread {
 
 	@Override
 	public void run() {
-		String logFileName = PathTool.getCurrentPath() + DateTool.getNospaceDateStr() + ".log";
-		System.out.println("日志文件是:"+logFileName);
+		String logFileName = "C:/logs/" + DateTool.getNospaceDateStr() + ".log";
+		System.out.println("日志文件是:" + logFileName);
 		this.file = new File(logFileName);
 		try {
-			this.writer = new FileWriter(file, true);
+			this.writer = new FileWriter(file,  Charset.forName("utf-8"));
 			while (true) {
 				StringBuffer outMessage = new StringBuffer();
 				for (int i = 0; i < MAX_QUEUE_LEN; i++) {
+
 					String message = poll();
+
 					if (message != null) {
 						outMessage.append(message);
 						outMessage.append("\n");
-						//System.out.print("+");
+						// System.out.print("+");
 					} else {
-						//System.out.print("-");
+						OsTool.sleepms(10);
 					}
 				}
 				OsTool.sleepms(300);
