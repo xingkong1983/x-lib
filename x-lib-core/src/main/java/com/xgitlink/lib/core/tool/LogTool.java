@@ -34,28 +34,25 @@ public class LogTool extends Thread {
 		System.out.println("日志文件是:" + logFileName);
 		this.file = new File(logFileName);
 		try {
-			this.writer = new FileWriter(file,  Charset.forName("utf-8"));
-			while (true) {
-				StringBuffer outMessage = new StringBuffer();
-				for (int i = 0; i < MAX_QUEUE_LEN; i++) {
+			this.writer = new FileWriter(file, Charset.forName("utf-8"),true);
 
-					String message = poll();
-
-					if (message != null) {
-						outMessage.append(message);
-						outMessage.append("\n");
-						// System.out.print("+");
-					} else {
-						OsTool.sleepms(10);
-					}
+			while (!isInterrupted()) {
+				String message = poll();
+				if (message == null) {
+					OsTool.sleepms(10);
+				} else {
+					writer.write(message);
+					writer.flush();
 				}
-				OsTool.sleepms(300);
-//				System.out.println("");
-				writer.write(outMessage.toString());
-				writer.flush();
+				//System.out.println("。");
 			}
+			System.out.println("线程征程退出来了");
+			writer.write("*****线程正常退出来了*****");
+			writer.flush();
 		} catch (IOException e) {
 			System.out.println(OsTool.getErrorText(e));
+			System.out.println("日志文件不能打开，没有记录日志");
+			return;
 		} finally {
 			OsTool.close(writer);
 		}

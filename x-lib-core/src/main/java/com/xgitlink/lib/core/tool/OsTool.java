@@ -2,6 +2,8 @@ package com.xgitlink.lib.core.tool;
 
 
 import java.io.Closeable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.xgitlink.lib.core.tool.thread.CmdThread;
@@ -9,6 +11,8 @@ import com.xgitlink.lib.core.tool.thread.CmdThread;
 public class OsTool {
 
 	private final static int MAX_STACK_LEN = 10;
+	private static String DATE_FORMAT_FULL = "yyyy/MM/dd HH:mm:ss:SSS";
+	private static String TIME_FORMAT = "[HH:mm:ss:SSS]: ";
 
 	/**
 	 * 打印一行字符串
@@ -17,6 +21,19 @@ public class OsTool {
 	 * @param show
 	 */
 	public static void print(String info, Boolean show) {
+
+		Date curDate =  new Date();
+		String curDateStr = new SimpleDateFormat(TIME_FORMAT).format(curDate);
+		int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+		String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
+		String fileName = Thread.currentThread().getStackTrace()[2].getFileName();
+		String className = Thread.currentThread().getStackTrace()[2].getClassName();
+		String threadName = Thread.currentThread().getName();
+
+
+		String headStr = curDateStr + threadName+" ("+fileName+":"+lineNumber+") :\n";
+		
+		info = headStr + info;
 		if (show) {
 			System.out.println(info);
 			LogTool.push(info);
@@ -29,6 +46,18 @@ public class OsTool {
 	 * @param info
 	 */
 	public static void print(String info) {
+		Date curDate =  new Date();
+		String curDateStr = new SimpleDateFormat(TIME_FORMAT).format(curDate);
+		int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+		String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
+		String fileName = Thread.currentThread().getStackTrace()[2].getFileName();
+		String className = Thread.currentThread().getStackTrace()[2].getClassName();
+		String threadName = Thread.currentThread().getName();
+
+
+		String headStr = curDateStr + threadName+" ("+fileName+":"+lineNumber+") :\n";
+		
+		info = headStr + info;
 		System.out.println(info);
 		LogTool.push(info);
 	}
