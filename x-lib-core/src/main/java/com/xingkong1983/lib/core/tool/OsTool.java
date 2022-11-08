@@ -1,4 +1,4 @@
-package com.xgitlink.lib.core.tool;
+package com.xingkong1983.lib.core.tool;
 
 
 import java.io.Closeable;
@@ -6,13 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import com.xgitlink.lib.core.tool.thread.CmdThread;
+import com.xingkong1983.lib.core.tool.thread.CmdThread;
 
 public class OsTool {
 
 	private final static int MAX_STACK_LEN = 10;
 	private static String DATE_FORMAT_FULL = "yyyy/MM/dd HH:mm:ss:SSS";
-	private static String TIME_FORMAT = "[HH:mm:ss:SSS]: ";
+	private static String TIME_FORMAT = "+ HH:mm:ss.SSS: ";
 
 	/**
 	 * 打印一行字符串
@@ -29,9 +29,7 @@ public class OsTool {
 		String fileName = Thread.currentThread().getStackTrace()[2].getFileName();
 		String className = Thread.currentThread().getStackTrace()[2].getClassName();
 		String threadName = Thread.currentThread().getName();
-
-
-		String headStr = curDateStr + threadName+" ("+fileName+":"+lineNumber+") :\n";
+		String headStr = curDateStr + threadName+" ("+fileName+":"+lineNumber+") : ";
 		
 		info = headStr + info;
 		if (show) {
@@ -55,7 +53,7 @@ public class OsTool {
 		String threadName = Thread.currentThread().getName();
 
 
-		String headStr = curDateStr + threadName+" ("+fileName+":"+lineNumber+") :\n";
+		String headStr = curDateStr + threadName+" ("+fileName+":"+lineNumber+") : ";
 		
 		info = headStr + info;
 		System.out.println(info);

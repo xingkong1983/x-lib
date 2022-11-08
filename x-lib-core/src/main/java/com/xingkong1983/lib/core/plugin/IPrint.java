@@ -1,4 +1,4 @@
-package com.xgitlink.lib.core.plugin;
+package com.xingkong1983.lib.core.plugin;
 
 import com.alibaba.fastjson.JSON;
 

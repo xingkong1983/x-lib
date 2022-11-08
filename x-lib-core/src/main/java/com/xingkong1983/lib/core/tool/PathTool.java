@@ -1,4 +1,4 @@
-package com.xgitlink.lib.core.tool;
+package com.xingkong1983.lib.core.tool;
 
 import java.io.File;
 
@@ -9,8 +9,8 @@ public class PathTool {
 	 * @param fileName
 	 * @return
 	 */
-	public static boolean isExists( String name ) {
-		File file = new File(name);
+	public static boolean isExists( String fileName ) {
+		File file = new File(fileName);
 		return file.exists();
 	}
 
@@ -19,10 +19,10 @@ public class PathTool {
 	 * @return
 	 */
 	public static String getEnv( ) {
-
 		String env = System.getProperty("env");
 		if (StringTool.isEmpty(env)) {
 			env = "dev";
+			OsTool.print("[获取env配置] 没有配置环境变量,默认采用开发环境配置dev");
 		}
 
 		return env;

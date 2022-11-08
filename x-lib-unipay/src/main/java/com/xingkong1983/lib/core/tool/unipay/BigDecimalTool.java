@@ -1,4 +1,4 @@
-package com.xgitlink.lib.core.tool.unipay;
+package com.xingkong1983.lib.core.tool.unipay;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

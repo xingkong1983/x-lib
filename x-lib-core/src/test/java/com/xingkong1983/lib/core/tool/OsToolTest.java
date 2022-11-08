@@ -1,6 +1,9 @@
-package com.xgitlink.lib.core.tool;
+package com.xingkong1983.lib.core.tool;
 
 import org.junit.jupiter.api.Test;
+
+import com.xingkong1983.lib.core.tool.LogTool;
+import com.xingkong1983.lib.core.tool.OsTool;
 
 class OsToolTest {
 

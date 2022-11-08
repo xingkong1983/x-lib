@@ -1,4 +1,4 @@
-package com.xgitlink.lib.core.tool;
+package com.xingkong1983.lib.core.tool;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,22 +10,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class LogTool extends Thread {
 
 	private final static int MAX_QUEUE_LEN = 200;
-
 	private static LinkedBlockingQueue<String> linkedBlockingQueue = new LinkedBlockingQueue<>(MAX_QUEUE_LEN);
-
 	private File file;
 	private Writer writer;
-
 	public static void push(String message) {
-
 		if (!linkedBlockingQueue.offer(message)) {
 			System.out.print("log lost.");
 		}
-	}
-
-	public String poll() {
-		String message = linkedBlockingQueue.poll();
-		return message;
 	}
 
 	@Override
@@ -37,17 +28,14 @@ public class LogTool extends Thread {
 			this.writer = new FileWriter(file, Charset.forName("utf-8"),true);
 
 			while (!isInterrupted()) {
-				String message = poll();
+				String message = linkedBlockingQueue.poll();
 				if (message == null) {
 					OsTool.sleepms(10);
 				} else {
 					writer.write(message);
 					writer.flush();
 				}
-				//System.out.println("。");
 			}
-			System.out.println("线程征程退出来了");
-			writer.write("*****线程正常退出来了*****");
 			writer.flush();
 		} catch (IOException e) {
 			System.out.println(OsTool.getErrorText(e));

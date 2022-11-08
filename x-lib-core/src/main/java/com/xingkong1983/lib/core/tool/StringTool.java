@@ -1,4 +1,6 @@
-package com.xgitlink.lib.core.tool;
+package com.xingkong1983.lib.core.tool;
+
+import java.util.Date;
 
 public class StringTool {
 
@@ -26,6 +28,13 @@ public class StringTool {
 		return !isEmpty(text);
 	}
 
+	public static boolean isNotEmpty( Date date ) {
+		if (date == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	/**
 	 * Description: 驼峰文本转下划线文本
 	 * 

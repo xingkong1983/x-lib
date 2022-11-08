@@ -34,8 +34,8 @@
 				<enabled>true</enabled>
 			</releases>
 		</repository>
-		
-	<repository>
+
+		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
@@ -43,7 +43,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		
+
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -57,8 +57,8 @@
 				<enabled>true</enabled>
 			</releases>
 		</pluginRepository>
-		
-				<pluginRepository>
+
+		<pluginRepository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
@@ -66,7 +66,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
-		
+
 	</pluginRepositories>
 	<dependencies>
 		<dependency>
@@ -102,6 +102,13 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.15</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>

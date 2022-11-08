@@ -1,8 +1,8 @@
-package com.xgitlink.lib.core.tool.thread;
+package com.xingkong1983.lib.core.tool.thread;
 
 import java.io.InputStream;
 
-import com.xgitlink.lib.core.tool.OsTool;
+import com.xingkong1983.lib.core.tool.OsTool;
 
 import lombok.Data;
 
