@@ -1,42 +1,11 @@
-# X-Framework
-一个开源简易的 Web 快速开发框架，基于 Spring Boot。
+# xk-lib-core 
 
-# 技术栈
-> Spring Boot
-> Spring Security
-> Mybatis
-> Mybatis-Plus
-> Beetl
-> Mariadb
-> JDK11
+星空代码库核心, 一个开源的 Java 开发小工具库。
+## 核心理念
+二八原则、保持一切简洁，只编写您最需要的工具。
 
+### OsTool (操作系统常用工具)
+包括终端操作、日志打印、线程休眠等工具函数。
 
-# 作者
-聂芳华  27557985@qq.com
-
-
-# 程序规范
- 
-[API 规范](docs/api.md)
-## 数据库
-数据库我们使用mariadb最新版本。如果是win7, 请使用低一点的版本。
-数据库存放在 db 目录下面。
-数据库名字请使用 x-db 。
-
-
-## 项目主文件
-
-
-## business 文件夹
-
-业务文件夹，下面存放所有的业务。
-
-api ： 用户api.
-
-http://localhost:9000/user/list
-
-
-
-org: 组织 api
-
-http://localhost:9000/org/list
+### IDTool (编号生成器工具)
+包括 4位、6位代码，UUID 代码等工具函数。
